@@ -4,37 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
- <div class="todos">
-    <h1>Vazifalar ro'yxati</h1>
-    <input type="text" class="addInp" placeholder="Vazifa kiriting">
-    <button class="addBtn">Qo'shish</button>
+    <div class="todos">
+        <h1>Vazifalar ro'yxati</h1>
+        <input type="text" class="addInp" placeholder="Vazifa kiriting">
+        <button class="addBtn">Qo'shish</button>
 
-</div>  
+    </div>
 
-<ul class="taskList"></ul>
+    <ul class="taskList"></ul>
 
 
-<div class="modal-overlay hidden" id="editModal">
-    <div class="modal-content">
-        <h2>Tahrirlash</h2>
-        <input type="text"placeholder="Tahrirlang" class="editInp">
-        <div class="modal-actions">
-             <button class="saveEditBtn">Saqlash</button>
-             <button class="closeEditBtn">Bekor qilish</button>
+    <div class="modal-overlay hidden" id="editModal">
+        <div class="modal-content">
+            <h2>Tahrirlash</h2>
+            <input type="text" placeholder="Tahrirlang" class="editInp">
+            <div class="modal-actions">
+                <button class="saveEditBtn">Saqlash</button>
+                <button class="closeEditBtn">Bekor qilish</button>
+            </div>
         </div>
     </div>
-</div>
 
-
-
-
-
-
-
-    <script src="/app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

@@ -9,17 +9,17 @@ let closeEditBtn = document.querySelector(".closeEditBtn")
 
 let currentEditIndex = null
 
- 
+
 let tasks = JSON.parse(localStorage.getItem("tasks")) || []
 
 
-function render(){
+function render() {
 
-     localStorage.setItem('tasks',JSON.stringify(tasks))
+    localStorage.setItem('tasks', JSON.stringify(tasks))
 
     taskList.innerHTML = tasks.map(
-        (task,index) =>
-           `<li class="${task.completed ? "completed" : ""}">
+        (task, index) =>
+            `<li class="${task.completed ? "completed" : ""}">
         <div class = "text-time">
             <i class="fa-regular ${task.completed ? "fa-square-check" : "fa-square"} check-icon" onclick=toggleTask(${index})></i>
             <small>${task.time}</small>
@@ -33,49 +33,49 @@ function render(){
         </div>
         </li>`,
     )
-    .join("")
+        .join("")
 }
 
 
-function openModal(index){
+function openModal(index) {
     currentEditIndex = index
     editInp.value = tasks[index].text
     editModal.classList.remove("hidden")
 }
 
-function closeModal(){
+function closeModal() {
     currentEditIndex = null
     editModal.classList.add("hidden")
 }
 closeEditBtn.addEventListener('click', closeModal)
 
-saveEditBtn.addEventListener('click', ()=> {
+saveEditBtn.addEventListener('click', () => {
     let newValue = editInp.value.trim()
 
-    if(newValue !== ""){
+    if (newValue !== "") {
         tasks[currentEditIndex].text = newValue
         render()
         closeModal()
     }
 })
 
-editInp.addEventListener('keydown', (e) =>{
-    if(e.key === "Enter"){
-        let  newValue = editInp.value.trim()
-        
-         if(newValue !== ""){
-        tasks[currentEditIndex].text = newValue
-        render()
-        closeModal()
-         }
+editInp.addEventListener('keydown', (e) => {
+    if (e.key === "Enter") {
+        let newValue = editInp.value.trim()
+
+        if (newValue !== "") {
+            tasks[currentEditIndex].text = newValue
+            render()
+            closeModal()
+        }
     }
 })
 
 addBtn.addEventListener('click', () => {
     let value = addInp.value.trim()
 
-    if(value !==""){
-        tasks.push({text : value,completed : false})
+    if (value !== "") {
+        tasks.push({ text: value, completed: false, time: getTime() })
         console.log(tasks);
         render()
     }
@@ -83,39 +83,39 @@ addBtn.addEventListener('click', () => {
 
 })
 
-document.addEventListener('keydown',(e)=>{
-    if(e.key === "Enter"){
+document.addEventListener('keydown', (e) => {
+    if (e.key === "Enter") {
         let value = addInp.value.trim();
 
-           if(value !==""){
-        tasks.push({text : value,completed : false, time:getTime()})
-        console.log(tasks);
-        render()
-    }
-    addInp.value = ""
+        if (value !== "") {
+            tasks.push({ text: value, completed: false, time: getTime() })
+            console.log(tasks);
+            render()
+        }
+        addInp.value = ""
     }
 })
 
-function deleteTask (index){
-    tasks.splice(index,1)
+function deleteTask(index) {
+    tasks.splice(index, 1)
     render()
     console.log(tasks);
-    
+
 }
 
-function toggleTask(index){
+function toggleTask(index) {
     tasks[index].completed = !tasks[index].completed
     render()
 }
 
-function getime(){
+function getTime() {
     let date = new Date()
 
     let day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate()
 
-    let month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1 ) : date.getMonth() +1
+    let month = (date.getMonth() + 1) < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1
 
-   let year = date.getFullYear()
+    let year = date.getFullYear()
 
     let hours = date.getHours() < 10 ? "0" + date.getHours() : date.getHours()
 
